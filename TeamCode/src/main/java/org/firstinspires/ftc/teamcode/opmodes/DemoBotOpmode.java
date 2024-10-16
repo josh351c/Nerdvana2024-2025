@@ -2,7 +2,10 @@ package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -19,18 +22,30 @@ import static org.firstinspires.ftc.teamcode.constant.BotComponentsV1.*;
 *
 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 */
+@TeleOp(name="DemoBotOpmode", group="Test BW")
 public class DemoBotOpmode extends OpMode {
+    public static DcMotor
+            front_left, front_right,
+            back_left, back_right;
+
+    public static IMU
+            imu;
 
     Input input = new Input();
 
-    IMU imu = hardwareMap.get(IMU.class, "imu");
+    //IMU imu = hardwareMap.get(IMU.class, "imu");
 
     @Override
     public void init() {
+        front_left = hardwareMap.get(DcMotor.class, "leftFront");
+        front_right = hardwareMap.get(DcMotor.class, "rightFront");
+        back_left = hardwareMap.get(DcMotor.class, "leftRear");
+        back_right = hardwareMap.get(DcMotor.class, "rightRear");
 
+            imu = hardwareMap.get(IMU.class, "imu");
         // flip one half of robot for mecanum drive
         // may swap to left half instead, see how it drives
-        front_right.setDirection(DcMotorSimple.Direction.REVERSE);
+        front_left.setDirection(DcMotorSimple.Direction.REVERSE);
 
 	// this one would be reversed by both so we leave it running forward, adjust to back_left as needed
         //back_right.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -38,8 +53,6 @@ public class DemoBotOpmode extends OpMode {
         //flip back motors because their chains are mounted opposite to front
         //may swap to front half instead
         back_left.setDirection(DcMotorSimple.Direction.REVERSE);
-
-
 
         // Adjust the orientation parameters to match your robot
         IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
