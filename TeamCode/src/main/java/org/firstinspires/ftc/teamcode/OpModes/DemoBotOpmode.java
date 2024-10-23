@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.opmodes;
+package org.firstinspires.ftc.teamcode.OpModes;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -158,8 +158,6 @@ public class DemoBotOpmode extends OpMode {
             pivot_Servo.setPosition(intakecenterpos);
         }
 
-
-
         // pickup
         if (input.right_bumper.down()){
             pivot_motor.setTargetPosition(pivotmpickuppos);
@@ -171,25 +169,25 @@ public class DemoBotOpmode extends OpMode {
         if (input.dpad_left.down()) {
             pivot_Servo.setPosition(intakeleftpos);
 
-        } if (input.dpad_up.down()) {
+        }
+        if (input.dpad_up.down()) {
             pivot_Servo.setPosition(intakecenterpos);
 
-        } if (input.dpad_right.down()) {
+        }
+        if (input.dpad_right.down()) {
             pivot_Servo.setPosition(intakerightpos);
         }
         // intake
-        if (input.right_trigger.down()) {
+        if (input.right_trigger.held()) {
             intake_servo.setPower(1);
 
         }
         // outtake
-        else if (input.left_trigger.down()) {
+        else if (input.left_trigger.held()) {
             intake_servo.setPower(-1);
         }
         // intake stop
         else intake_servo.setPower(0);
-
-
 
         //high bucket scoring
         if (input.y.down()) {
