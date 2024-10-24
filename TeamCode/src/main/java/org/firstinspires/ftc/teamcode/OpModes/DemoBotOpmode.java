@@ -40,11 +40,11 @@ public class DemoBotOpmode extends OpMode {
     //pivot motor values
     int pivotmstartpos = 0;
     int pivotmdrivepos = 28;
-    int pivotmpickuppos = 1274;
-    int pivotmlowbucket = 946;
-    int pivotmhighbucket = 751;
-    int pivotmlowchamber = 1150;
-    int pivotmhighchamber = 930;
+    int pivotmpickuppos = 120;
+    int pivotmlowbucket = 420;
+    int pivotmhighbucket = 586;
+    int pivotmlowchamber = 220;
+    int pivotmhighchamber = 425;
 
     //extendo positions
     int extendostartpos = 1;
